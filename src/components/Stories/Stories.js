@@ -1,5 +1,16 @@
 const Stories = (props) => {
-  return <div>Stories Page</div>;
+  return (
+    <div>
+      <div>tories Page</div>
+      <div>tories Page</div>
+      <div>tories Page</div>
+      <div>tories Page</div>
+      <div>tories Page</div>
+      <div>tories Page</div>
+      <div>tories Page</div>
+      <div>tories Page</div>
+    </div>
+  );
 };
 
 export default Stories;

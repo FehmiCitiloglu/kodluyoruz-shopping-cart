@@ -2,7 +2,6 @@ import "antd/dist/antd.css";
 import "./MainPage.css";
 
 import { Layout, Button } from "antd";
-import MyHeader from "./MyHeader";
 
 const { Content, Footer } = Layout;
 

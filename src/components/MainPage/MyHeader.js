@@ -1,5 +1,5 @@
 import { Layout, Menu, Input, AutoComplete } from "antd";
-import { SearchOutlined } from "@ant-design/icons";
+import { SearchOutlined, ShoppingOutlined } from "@ant-design/icons";
 import "./MyHeader.css";
 import { Link } from "react-router-dom";
 
@@ -32,17 +32,32 @@ const MyHeader = () => {
           <Link to="/about">About</Link>
         </Menu.Item>
       </Menu>
-      <span style={{ display: "flex", flexDirectin: "row" }}>
+      <span
+        className="search-bar"
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          position: "relative",
+          left: "-600px",
+        }}
+      >
         <SearchOutlined
           style={{
             position: "relative",
             top: "25px",
-            left: "-2px",
+            left: "-10px",
             zIndex: "2",
           }}
         />
         <Input placeholder="Search" bordered={false} allowClear />
       </span>
+      <span className="cart-icon">
+        <ShoppingOutlined />
+      </span>
+      <br />
+      <h3>
+        <Link to="/login">Login</Link>
+      </h3>
 
       <hr />
     </Header>

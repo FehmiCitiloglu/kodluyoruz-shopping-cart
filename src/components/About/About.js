@@ -1,5 +1,15 @@
 const About = (props) => {
-  return <div>About Page</div>;
+  return (
+    <div>
+      <div>About Page</div>
+      <div>About Page</div>
+      <div>About Page</div>
+      <div>About Page</div>
+      <div>About Page</div>
+      <div>About Page</div>
+      <div>About Page</div>
+    </div>
+  );
 };
 
 export default About;

@@ -6,6 +6,7 @@ import About from "./components/About/About";
 import Shop from "./components/ShopPage/Shop";
 import Stories from "./components/Stories/Stories";
 import MyHeader from "./components/MainPage/MyHeader";
+import Login from "./components/Login/Login";
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
           </Route>
           <Route path="/stories">
             <Stories />
+          </Route>
+          <Route path="/login">
+            <Login />
           </Route>
           <Route path="/">
             <MainPage />
