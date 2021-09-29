@@ -1,4 +1,4 @@
-import { StarFilled, StarTwoTone } from "@ant-design/icons";
+import { StarTwoTone } from "@ant-design/icons";
 
 const MyRate = (props) => {
   return (

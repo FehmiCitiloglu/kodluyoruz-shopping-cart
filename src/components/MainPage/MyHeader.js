@@ -1,7 +1,9 @@
+import { useState } from "react";
+
 import { Layout, Menu, Input, AutoComplete } from "antd";
 import { SearchOutlined, ShoppingOutlined } from "@ant-design/icons";
 import "./MyHeader.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const { Header } = Layout;
 
@@ -13,52 +15,43 @@ const mockVal = (str: string, repeat: number = 1) => ({
 const MyHeader = () => {
   return (
     <Header className="my-header">
-      <Menu
-        theme="compact"
-        mode="horizontal"
-        defaultSelectedKeys={["1"]}
-        className="navbar"
-      >
+      <Menu mode="horizontal" defaultSelectedKeys={["1"]} className="navbar">
         <Menu.Item key="1" style={{ fontWeight: "bold" }}>
-          <Link to="/">E-commerce</Link>
+          <NavLink to="/" activeClassName="">
+            E-commerce
+          </NavLink>
         </Menu.Item>
         <Menu.Item key="2">
-          <Link to="/shop">Shop</Link>
+          <NavLink to="/shop">Shop</NavLink>
         </Menu.Item>
         <Menu.Item key="3">
-          <Link to="/stories">Stories</Link>
+          <NavLink to="/stories">Stories</NavLink>
         </Menu.Item>
         <Menu.Item key="4">
-          <Link to="/about">About</Link>
+          <NavLink to="/about">About</NavLink>
         </Menu.Item>
       </Menu>
-      <span
-        className="search-bar"
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          position: "relative",
-          left: "-600px",
-        }}
-      >
+      <span className="search-bar">
         <SearchOutlined
           style={{
             position: "relative",
             top: "25px",
-            left: "-10px",
+            left: "-5px",
             zIndex: "2",
           }}
         />
         <Input placeholder="Search" bordered={false} allowClear />
       </span>
-      <span className="cart-icon">
-        <ShoppingOutlined />
-      </span>
+      <NavLink to="/cart">
+        <button className="cart-icon">
+          <ShoppingOutlined width={10} />
+          <span className="cart-count">3</span>
+        </button>
+      </NavLink>
       <br />
       <h3>
-        <Link to="/login">Login</Link>
+        <NavLink to="/login">Login</NavLink>
       </h3>
-
       <hr />
     </Header>
   );

@@ -52,7 +52,7 @@ const Login = (props) => {
             <Checkbox>Remember me</Checkbox>
           </Form.Item>
 
-          <a className="login-form-forgot" href="">
+          <a className="login-form-forgot" href="/">
             Forgot password
           </a>
         </Form.Item>
@@ -66,7 +66,7 @@ const Login = (props) => {
             Log in
           </Button>
           <div>
-            Or <a href="">register now!</a>
+            Or <a href="/">register now!</a>
           </div>
         </Form.Item>
       </Form>

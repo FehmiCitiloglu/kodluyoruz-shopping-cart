@@ -12,7 +12,7 @@ const Filters = (props) => {
       <span className={classes.title}>
         <h2>Filters</h2>
 
-        <a>clear filters</a>
+        <a href="/">clear filters</a>
       </span>
       <Checkbox.Group
         mode="horizontal"
