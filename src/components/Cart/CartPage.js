@@ -1,4 +1,4 @@
-import { Button, Input, Row, Col } from "antd";
+import { Button, Input } from "antd";
 import classes from "./CartPage.module.css";
 import { Link } from "react-router-dom";
 import CartProduct from "./CartProduct";
