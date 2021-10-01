@@ -2,6 +2,8 @@ import { Row, Col, Button, Rate } from "antd";
 import classes from "./ProductDetail.module.css";
 
 const ProductDetail = () => {
+  
+
   return (
     <div className={classes["product-detail"]}>
       <Row gutter={30} justify="center">

@@ -1,9 +1,11 @@
-import { useState } from "react";
+// import { useState, useContext } from "react";
 
-import { Layout, Menu, Input, AutoComplete } from "antd";
+import { Layout, Menu, Input, AutoComplete, Button } from "antd";
 import { SearchOutlined, ShoppingOutlined } from "@ant-design/icons";
 import "./MyHeader.css";
 import { NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { authActions } from "../../store/auth-slice.js";
 
 const { Header } = Layout;
 
@@ -13,6 +15,19 @@ const mockVal = (str: string, repeat: number = 1) => ({
 });
 
 const MyHeader = () => {
+  const dispatch = useDispatch();
+
+  // const authCtx = useContext(AuthContext);
+
+  const logoutHandler = () => {
+    dispatch(authActions.logout());
+    // dispatch(authCtx.onLogout());
+  };
+
+  const isAuth = useSelector((state) => state.auth.isAuthenticated);
+  console.log(isAuth);
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+
   return (
     <Header className="my-header">
       <Menu mode="horizontal" defaultSelectedKeys={["1"]} className="navbar">
@@ -45,13 +60,22 @@ const MyHeader = () => {
       <NavLink to="/cart">
         <button className="cart-icon">
           <ShoppingOutlined width={10} />
-          <span className="cart-count">3</span>
+          <span className="cart-count">{totalQuantity}</span>
         </button>
       </NavLink>
       <br />
-      <h3>
-        <NavLink to="/login">Login</NavLink>
-      </h3>
+      {!isAuth && (
+        <h3>
+          <NavLink to="/login">Login</NavLink>
+        </h3>
+      )}
+      {isAuth && (
+        <h3>
+          <NavLink to="/">
+            <Button onClick={logoutHandler}>Logout</Button>
+          </NavLink>
+        </h3>
+      )}
       <hr />
     </Header>
   );

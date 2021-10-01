@@ -1,14 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import { AuthContextProvider } from "./store/auth-context";
-import { CartProvider } from "./store/cart-context";
+
+import { Provider } from "react-redux";
+
+import store from "./store/index";
+// import { AuthContextProvider } from "./store/auth-context";
 
 ReactDOM.render(
-  <AuthContextProvider>
-    <CartProvider>
-      <App />
-    </CartProvider>
-  </AuthContextProvider>,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById("root")
 );

@@ -11,7 +11,18 @@ import classes from "./MyDropDown.module.css";
 const MyDropDown = () => {
   const handleMenuClick = (e) => {
     message.info("Click on menu item.");
-    console.log("click", e.domEvent.innerHTML);
+    console.log("click", e.key);
+    switch (e.key) {
+      case "1":
+        break;
+      case "2":
+        break;
+      case "3":
+        break;
+
+      default:
+        break;
+    }
   };
   const menu = (
     <Menu onClick={handleMenuClick}>
@@ -30,7 +41,7 @@ const MyDropDown = () => {
     <div className={classes.myDropDown}>
       <Dropdown overlay={menu}>
         <Button>
-          Sorted By <DownOutlined />
+          Sort By <DownOutlined />
         </Button>
       </Dropdown>
     </div>
