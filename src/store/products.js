@@ -1,30 +1,47 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// First, create the thunk
-// const fetchUserById = createAsyncThunk(
-//   "users/fetchByIdStatus",
-//   async (userId, thunkAPI) => {
-//     const response = await userAPI.fetchById(userId);
-//     return response.data;
-//   }
-// );
-
-// Then, handle actions in your reducers:
-const usersSlice = createSlice({
-  name: "users",
-  initialState: { entities: [], loading: "idle" },
-  reducers: {
-    // standard reducer logic, with auto-generated action types per reducer
+const productsSlice = createSlice({
+  name: "products",
+  initialState: {
+    products: [],
+    product: {
+      id: 0,
+      image: "",
+      title: "",
+      category: "",
+      price: 0,
+      description: "",
+      rating: {
+        rate: 0,
+        count: 0,
+      },
+    },
   },
-  extraReducers: (builder) => {
-    // Add reducers for additional action types here, and handle loading state as needed
-    builder.addCase(fetchUserById.fulfilled, (state, action) => {
-      // Add user to the state array
-      state.entities.push(action.payload);
-    });
+  reducers: {
+    getProducts(state, action) {
+      state.products = action.payload;
+    },
+    filterProducts(state, action) {
+      const category = action.payload;
+      console.log("category", category[0]);
+      state.products = state.products.filter(
+        (product) => product.category === category[0]
+      );
+      console.log(state.products);
+    },
+    getProductById(state, action) {
+      const id = +action.payload;
+      state.product = state.products.find((product) => +product.id === id);
+    },
+    sortProducts(state, action) {
+      const comparison = action.payload;
+      state.products = state.products.sort(
+        (a, b) => a.comparison - b.comparison
+      );
+    },
   },
 });
 
-const initialProductsState = {
-  products: [],
-};
+export const productActions = productsSlice.actions;
+
+export default productsSlice;

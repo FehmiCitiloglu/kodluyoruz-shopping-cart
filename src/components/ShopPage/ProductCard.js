@@ -3,15 +3,9 @@ import { Col } from "antd";
 import MyRate from "./MyRate";
 import { Link } from "react-router-dom";
 
-const ProductCard = ({ products, loading }) => {
-  products.map((product) => {
-    // console.log("product cart logu", product);
-    // console.log("product cart id", product.id);
-    console.log(product.category);
-  });
-  let filteredProducts = products.filter((category) => category === "jewelery");
-  console.log(filteredProducts);
-
+const ProductCard = ({ products }) => {
+ 
+ 
   return (
     <>
       {products.map((product) => (

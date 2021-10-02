@@ -1,33 +1,61 @@
 import { Row, Col, Button, Rate } from "antd";
 import classes from "./ProductDetail.module.css";
+import { cartActions } from "../../store/cart.js";
+import { useSelector, useDispatch } from "react-redux";
+import { Redirect, useParams, Link } from "react-router-dom";
+
+import { useState, useEffect } from "react";
+import { productActions } from "../../store/products";
 
 const ProductDetail = () => {
-  
+  let { id } = useParams();
+  const dispatch = useDispatch();
+  const isAuth = useSelector((state) => state.auth.isAuthenticated);
+  const [quantity, setQuantity] = useState(1);
+
+  useEffect(() => {
+    dispatch(productActions.getProductById(id));
+  }, [dispatch]);
+
+  const product = useSelector((state) => state.prod.product);
+
+  console.log(product);
+  const addToCartHandle = () => {
+    if (isAuth) {
+      dispatch(cartActions.addItemToCart(id));
+    } else {
+      <Link to="/login" />;
+    }
+  };
 
   return (
     <div className={classes["product-detail"]}>
       <Row gutter={30} justify="center">
         <Col md={12}>
           <div className={classes.deneme1}>
-            <img src="https://via.placeholder.com/542" alt="" />
+            <img
+              src={product.image}
+              alt=""
+              style={{
+                position: "relative",
+                left: 100,
+                width: 271,
+              }}
+            />
           </div>
         </Col>
         <Col md={12}>
           <div className={classes.deneme2}>
-            <h2>Mens winter jacket</h2>
+            <h2>{product.name}</h2>
             <div className={classes.price}>
-              <strong>$ 99</strong>
+              <strong>$ {product.price}</strong>
               <div>
-                <p>4.3</p>
+                <p>{product.rating.rate}</p>
                 <Rate />
               </div>
             </div>
-            <p>132 değerlendirme</p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
-              cum iure ducimus enim eveniet, repellat, illum deserunt nobis
-              voluptates reprehenderit debitis iste, officia minus eum?
-            </p>
+            <p>{product.rating.count} değerlendirme</p>
+            <p>{product.description}</p>
             <Row>
               <Col md={14}>
                 <Button
@@ -36,6 +64,7 @@ const ProductDetail = () => {
                     background: "black",
                     color: "wheat",
                   }}
+                  onClick={addToCartHandle}
                 >
                   Add to Cart
                 </Button>
@@ -52,7 +81,7 @@ const ProductDetail = () => {
                 }}
               >
                 <div className={classes.quantity}>
-                  <Button>-</Button>2<Button>+ </Button>
+                  <Button>-</Button>1<Button>+ </Button>
                 </div>
               </Col>
             </Row>

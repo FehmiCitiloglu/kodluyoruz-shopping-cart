@@ -7,23 +7,10 @@ import MyDropDown from "./MyDropDown";
 import Filters from "./Filters";
 import ProductCard from "./ProductCard";
 
-const Shop = (props) => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
+const Shop = ({ products }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage, setProductsPerPage] = useState(6);
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      setLoading(true);
-      const res = await axios.get(
-        "https://api.npoint.io/3a5ea76fb9a0acf96d50/products"
-      );
-      setProducts(res.data);
-      setLoading(false);
-    };
-    fetchProducts();
-  }, []);
   // Get current products
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -35,9 +22,10 @@ const Shop = (props) => {
   const loadMoreHandler = () => {
     setProductsPerPage((prevState) => prevState + 3);
   };
+
   let categories = [];
+
   products.map((product) => {
-    console.log("mapli products", product.category);
     categories.push(product.category);
   });
   categories = [...new Set(categories)];
@@ -52,7 +40,7 @@ const Shop = (props) => {
         <MyDropDown />
       </div>
       <Row gutter={[48, 48]} className={classes.contents}>
-        <ProductCard products={currentProducts} loading={loading} />
+        <ProductCard products={currentProducts} />
       </Row>
       <Button className={classes.moreLoad} onClick={loadMoreHandler}>
         Load more product

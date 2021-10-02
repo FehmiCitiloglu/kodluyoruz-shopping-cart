@@ -7,6 +7,7 @@ import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { authActions } from "../../store/auth-slice.js";
 
+
 const { Header } = Layout;
 
 // values to compare with input value
@@ -25,7 +26,7 @@ const MyHeader = () => {
   };
 
   const isAuth = useSelector((state) => state.auth.isAuthenticated);
-  console.log(isAuth);
+ 
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
 
   return (
