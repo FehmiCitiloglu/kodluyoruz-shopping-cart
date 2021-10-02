@@ -16,13 +16,14 @@ const ProductDetail = () => {
   useEffect(() => {
     dispatch(productActions.getProductById(id));
   }, [dispatch]);
-
+  console.log("productdetail çalıştı");
   const product = useSelector((state) => state.prod.product);
 
-  console.log(product);
+  
+
   const addToCartHandle = () => {
     if (isAuth) {
-      dispatch(cartActions.addItemToCart(id));
+      dispatch(cartActions.addItemToCart(product));
     } else {
       <Link to="/login" />;
     }
