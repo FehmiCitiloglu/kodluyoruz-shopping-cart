@@ -4,6 +4,9 @@ const productsSlice = createSlice({
   name: "products",
   initialState: {
     products: [],
+    categories: [],
+    filteredProducts: [],
+    isFiltered: false,
     product: {
       id: 0,
       image: "",
@@ -19,12 +22,17 @@ const productsSlice = createSlice({
   },
   reducers: {
     getProducts(state, action) {
+      state.products.map((product) => state.categories.push(product.category));
+      state.categories = [...new Set(state.categories)];
+
+      state.isFiltered = false;
       state.products = action.payload;
     },
     filterProducts(state, action) {
+      state.isFiltered = true;
       const category = action.payload;
       console.log("category", category[0]);
-      state.products = state.products.filter(
+      state.filteredProducts = state.products.filter(
         (product) => product.category === category[0]
       );
       console.log(state.products);

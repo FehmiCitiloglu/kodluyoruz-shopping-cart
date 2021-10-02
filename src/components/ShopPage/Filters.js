@@ -1,14 +1,16 @@
 import { Checkbox, Button } from "antd";
 import classes from "./Filters.module.css";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { productActions } from "../../store/products";
 import { fetchProductData } from "../../store/product-actions";
 
-const Filters = ({ categories }) => {
+const Filters = () => {
   const [isChecked, setIsCheckeds] = useState(false);
 
   const dispatch = useDispatch();
+  const categories = useSelector((state) => state.prod.categories);
+
   const onChange = (e) => {
     console.log(`checked = ${e}`);
     setIsCheckeds(true);

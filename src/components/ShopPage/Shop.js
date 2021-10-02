@@ -6,11 +6,18 @@ import MyDropDown from "./MyDropDown";
 
 import Filters from "./Filters";
 import ProductCard from "./ProductCard";
+import { useSelector, useDispatch } from "react-redux";
 
-const Shop = ({ products }) => {
+import { fetchProductData } from "../../store/product-actions";
+
+const Shop = () => {
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.prod.products);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage, setProductsPerPage] = useState(6);
 
+  const filteredProducts = useSelector((state) => state.prod.filteredProducts);
+  const isFiltered = useSelector((state) => state.prod.isFiltered);
   // Get current products
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -22,25 +29,30 @@ const Shop = ({ products }) => {
   const loadMoreHandler = () => {
     setProductsPerPage((prevState) => prevState + 3);
   };
+  useEffect(() => {
+    dispatch(fetchProductData());
+  }, [dispatch]);
 
-  let categories = [];
+  // let categories = [];
 
-  products.map((product) => {
-    categories.push(product.category);
-  });
-  categories = [...new Set(categories)];
+  // products.map((product) => {
+  //   categories.push(product.category);
+  // });
+  // categories = [...new Set(categories)];
 
   // console.log("shop current products", currentProducts);
   return (
     <div className={classes.shop}>
       <div>
-        <Filters className={classes.filters} categories={categories} />
+        <Filters className={classes.filters} />
       </div>
       <div className={classes.dropdown}>
         <MyDropDown />
       </div>
       <Row gutter={[48, 48]} className={classes.contents}>
-        <ProductCard products={currentProducts} />
+        <ProductCard
+          products={!isFiltered ? currentProducts : filteredProducts}
+        />
       </Row>
       <Button className={classes.moreLoad} onClick={loadMoreHandler}>
         Load more product

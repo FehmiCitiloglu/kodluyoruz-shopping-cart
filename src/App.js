@@ -21,7 +21,7 @@ import { useSelector, useDispatch } from "react-redux";
 // import { useHistory } from "react-router-dom";
 // import AuthContext from "./store/auth-context";
 import UserPage from "./components/UserPage/UserPage";
-import { fetchProductData } from "./store/product-actions";
+// import { fetchProductData } from "./store/product-actions";
 
 function App() {
   const dispatch = useDispatch();
@@ -29,12 +29,12 @@ function App() {
   // const authCtx = useContext(AuthContext);
   const isAuth = useSelector((state) => state.auth.isAuthenticated);
 
-  useEffect(() => {
-    dispatch(fetchProductData());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchProductData());
+  // }, [dispatch]);
 
-  const products = useSelector((state) => state.prod.products);
-  console.log(products);
+  // const products = useSelector((state) => state.prod.products);
+  // console.log(products);
   return (
     <div>
       <Router>
@@ -44,7 +44,7 @@ function App() {
             <About />
           </Route>
           <Route path="/shop">
-            <Shop products={products} />
+            <Shop />
           </Route>
           <Route path="/stories">
             <Stories />
