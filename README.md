@@ -1,4 +1,5 @@
 [Demo](https://vigorous-bassi-b108f6.netlify.app/)
+You can use random username and password to login demo
 
 # Shopping Cart
 
