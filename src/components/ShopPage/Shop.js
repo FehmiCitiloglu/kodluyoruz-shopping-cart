@@ -8,7 +8,7 @@ import Filters from "./Filters";
 import ProductCard from "./ProductCard";
 
 const Shop = ({ products }) => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage] = useState(1);
   const [productsPerPage, setProductsPerPage] = useState(6);
 
   // Get current products

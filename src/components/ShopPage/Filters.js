@@ -1,22 +1,15 @@
 import { Checkbox, Button } from "antd";
-import classes from "./Filters.module.css";
-import { useEffect, useState } from "react";
+
 import { useDispatch } from "react-redux";
 import { productActions } from "../../store/products";
 import { fetchProductData } from "../../store/product-actions";
 
 const Filters = ({ categories }) => {
-  const [isChecked, setIsCheckeds] = useState(false);
-
   const dispatch = useDispatch();
   const onChange = (e) => {
     console.log(`checked = ${e}`);
-    setIsCheckeds(true);
-    dispatch(productActions.filterProducts(e));
-  };
 
-  const toggleCheckeds = () => {
-    setIsCheckeds();
+    dispatch(productActions.filterProducts(e));
   };
 
   const clearFilterHandle = (e) => {

@@ -2,7 +2,7 @@
   position: fixed;
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: flex-start;
   z-index: 1;
   width: 100vw;
   background-color: rgb(220, 220, 220);

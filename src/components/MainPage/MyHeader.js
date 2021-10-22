@@ -1,19 +1,15 @@
 // import { useState, useContext } from "react";
 
-import { Layout, Menu, Input, AutoComplete, Button } from "antd";
+import { Layout, Menu, Input, Button } from "antd";
 import { SearchOutlined, ShoppingOutlined } from "@ant-design/icons";
 import "./MyHeader.css";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { authActions } from "../../store/auth-slice.js";
 
-
 const { Header } = Layout;
 
 // values to compare with input value
-const mockVal = (str: string, repeat: number = 1) => ({
-  value: str.repeat(repeat),
-});
 
 const MyHeader = () => {
   const dispatch = useDispatch();
@@ -26,7 +22,7 @@ const MyHeader = () => {
   };
 
   const isAuth = useSelector((state) => state.auth.isAuthenticated);
- 
+
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
 
   return (

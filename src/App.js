@@ -2,12 +2,7 @@ import MainPage from "./components/MainPage/MainPage";
 import "./App.css";
 import { useEffect } from "react";
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import About from "./components/About/About";
 import Shop from "./components/ShopPage/Shop";
 import Stories from "./components/Stories/Stories";

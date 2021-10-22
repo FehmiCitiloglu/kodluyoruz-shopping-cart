@@ -1,5 +1,4 @@
 import classes from "./CartPage.module.css";
-import { useSelector } from "react-redux";
 import { Button } from "antd";
 
 import { useDispatch } from "react-redux";
